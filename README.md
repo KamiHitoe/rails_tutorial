@@ -11,14 +11,15 @@
 
 ## rails commands
 
-```python
+```ruby
 bundle install --without production
 rails db:migrate
 rails test
 rails server
 ```
 
-```python:config/environment/development.rb
+```ruby
+# config/environment/development.rb
   # Cloud9への接続を許可
   config.hosts.clear
 ```
@@ -26,7 +27,7 @@ rails server
 
 ## heroku commands
 
-```python
+```ruby
 # login
 heroku login --interactive # ブラウザを開かない
 
