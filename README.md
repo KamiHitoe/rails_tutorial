@@ -9,6 +9,21 @@
 - Router: config/routes.rb
 - Asset: app/assets/
 
+## rails commands
+
+```python
+bundle install --without production
+rails db:migrate
+rails test
+rails server
+```
+
+```python:config/environment/development.rb
+  # Cloud9への接続を許可
+  config.hosts.clear
+```
+
+
 ## heroku commands
 
 ```python
