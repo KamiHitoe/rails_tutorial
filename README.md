@@ -27,6 +27,8 @@ rails server
 
 ## heroku commands
 
+master以外のbranchで作業している時は、一度localのmaterブランチにmergeしてpushする必要がある
+
 ```ruby
 # login
 heroku login --interactive # ブラウザを開かない
@@ -36,5 +38,8 @@ heroku create "app_name"
 
 # rename
 heroku raname "new_app_name"
+
+# push
+git push heroku master
 ```
 
