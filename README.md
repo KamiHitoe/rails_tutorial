@@ -58,7 +58,21 @@ rails db:rollback
 rails db:migrate VERSION=0
 ```
 
+testの彩色
+```ruby
+# testのGREEN, REDをわかりやすく表示
+require 'minitest/reporters'
+Minitest::Reporters.use!
+```
 
+guard(test自動化)の実行
+```ruby
+# initialize
+bundle exec guard init
+
+# run
+bundle exec guard
+```
 
 
 ## heroku commands
