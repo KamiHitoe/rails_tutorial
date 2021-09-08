@@ -1,6 +1,11 @@
 
 # rails_tutorial
 
+まずrubyのversionを合わせよう(Cloud9用)
+```ruby
+rvm use 2.6.6
+```
+
 ## 開発手順
 1. gemのインストール。railsのビルド
 2. controllerのgenerate
