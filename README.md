@@ -6,11 +6,6 @@
 rvm use 2.6.6
 ```
 
-## 開発手順
-1. gemのインストール。railsのビルド
-2. controllerのgenerate
-3. testによるTDD開発
-
 ## 構造
 
 - Model: app/models/
@@ -18,6 +13,15 @@ rvm use 2.6.6
 - Controller: app/controllers/
 - Router: config/routes.rb
 - Asset: app/assets/
+
+
+## 開発手順
+
+1. gemのインストール。railsのビルド
+2. controllerのgenerate
+3. testによるTDD開発
+4. 
+
 
 ## rails commands
 
