@@ -8,11 +8,16 @@
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag('miko01.jpg') %>
+    <!-- 最終引数のHashは{}いらない -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

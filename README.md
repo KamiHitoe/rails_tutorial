@@ -15,14 +15,27 @@ rvm use 2.6.6
 - Router: config/routes.rb
 - Asset: app/assets/
 - Test: test/
+- Gem: Gemfile
 
 
-## 開発手順
+## Webアプリ開発手順
 
 1. gemのインストール。railsのビルド
 2. controllerのgenerate
 3. testによるTDD開発
-4. 
+4. 画面モックとUI設計
+5. routing
+6. DBモデル設計
+
+
+## erb(embedded ruby)
+```ruby
+# 出力なし
+<%  %>
+
+# 出力あり
+<%=  %>
+```
 
 
 ## rails commands
