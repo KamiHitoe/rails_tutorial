@@ -11,8 +11,10 @@ rvm use 2.6.6
 - Model: app/models/
 - View: app/views/
 - Controller: app/controllers/
+- Helper: app/helpers/
 - Router: config/routes.rb
 - Asset: app/assets/
+- Test: test/
 
 
 ## 開発手順
