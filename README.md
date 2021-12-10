@@ -17,8 +17,22 @@ gem install rails
 rails "APP_NAME"
 # run app
 bin/rails server
+# or
+rails server
 ```
 
+## install modules
+
+```shell
+# config to install without modules for production
+bundle config set --local without 'production'
+#update
+bundle update
+# install modules in Gemfile
+bundle install
+# init webpacker
+rails webpacker:install
+```
 
 
 ## directory structure
@@ -33,14 +47,27 @@ bin/rails server
 - Gem: Gemfile
 
 
-## Webアプリ開発手順
+## App dev path
 
-1. gemのインストール。railsのビルド
-2. controllerのgenerate
-3. testによるTDD開発
-4. 画面モックとUI設計
+1. install gem. create rails app
+2. generate controller
+3. TDD in test/
+4. UI design, transition design
 5. routing
-6. DBモデル設計
+6. DB design
+
+
+## routing
+
+write config/routes.rb
+
+```ruby
+Rails.application.routes.draw do
+  
+  root 'Controller#homePath'
+  get 'Controller/path'
+end
+```
 
 
 ## erb(embedded ruby)
@@ -53,51 +80,45 @@ bin/rails server
 ```
 
 
-## rails commands
+## Rails Commands
 
-appの初期設定
 ```ruby
-bundle install --without production
 rails db:migrate
 rails test
+rails console
 rails server
 ```
 
-Cloud9での接続設定
+config Cloud9 connection
 ```ruby
 # config/environment/development.rb
-  # Cloud9への接続を許可
+  # allow to connect with Cloud9
   config.hosts.clear
 ```
 
-rails generate
+rails generate controller or model
 ```ruby
 # controller
 rails generate controller "controller_name" "actions"
-
 # remove
 rails destroy controller "controller_name" "actions"
-
 # model
 rails generate model "model_name" "fields:type"
-
 # remove
 rails destroy model "model_name"
 ```
 
 rails db
 ```ruby
-# 生成
+# generate
 rails db:migrate
-
-# 復元
+# restore
 rails db:rollback
-
-# 最初に戻す
+# init
 rails db:migrate VERSION=0
 ```
 
-testの彩色
+make test colorful
 ```ruby
 # testのGREEN, REDをわかりやすく表示
 require 'minitest/reporters'
@@ -108,7 +129,6 @@ guard(test自動化)の実行
 ```ruby
 # initialize
 bundle exec guard init
-
 # run
 bundle exec guard
 ```
@@ -116,21 +136,18 @@ bundle exec guard
 
 ## heroku commands
 
-master以外のbranchで作業している時は、一度localのmaterブランチにmergeしてpushする必要がある
+you need to push after merge temporary branch to master branch, when you work in another branch but master
+
 
 ```ruby
 # login
 heroku login --interactive # ブラウザを開かない
-
 # create app
-heroku create "app_name"
-
+heroku create "APP_NAME"
 # rename
-heroku raname "new_app_name"
-
+heroku raname "NEW_APP_NAME"
 # push
 git push heroku master
-
 # log
 heroku logs
 ```
