@@ -1,12 +1,27 @@
 
-# rails_tutorial
+# Rails
 
-まずrubyのversionを合わせよう(Cloud9用)
+Rails is a web application development framework written in the Ruby programming lang.
+
+first, you set ruby version for AWS Cloud9
 ```ruby
 rvm use 2.6.6
 ```
 
-## 構造
+## Get Started
+
+```shell
+# install
+gem install rails
+# create app
+rails "APP_NAME"
+# run app
+bin/rails server
+```
+
+
+
+## directory structure
 
 - Model: app/models/
 - View: app/views/
@@ -119,4 +134,3 @@ git push heroku master
 # log
 heroku logs
 ```
-
