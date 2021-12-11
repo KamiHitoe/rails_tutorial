@@ -6,6 +6,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get static_pages_home_url
     # HTTP status code: 200
     assert_response :success
+    # check attribute's value correct or not
     assert_select "title", "Home | Ruby on Rails Tutorial Sample App"
   end
 

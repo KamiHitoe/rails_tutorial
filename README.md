@@ -65,17 +65,21 @@ write config/routes.rb
 Rails.application.routes.draw do
   
   root 'Controller#homePath'
+  # HTTP method
   get 'Controller/path'
 end
 ```
 
 
-## erb(embedded ruby)
+## .html.erb(embedded ruby)
+
+it it html file with embedded ruby. it makes `View` role in app
+
 ```ruby
-# 出力なし
+# without output
 <%  %>
 
-# 出力あり
+# with output
 <%=  %>
 ```
 
@@ -114,7 +118,7 @@ rails db
 rails db:migrate
 # restore
 rails db:rollback
-# init
+# restore init version
 rails db:migrate VERSION=0
 ```
 
@@ -125,7 +129,7 @@ require 'minitest/reporters'
 Minitest::Reporters.use!
 ```
 
-guard(test自動化)の実行
+exec guard(test automation)
 ```ruby
 # initialize
 bundle exec guard init
