@@ -2,6 +2,8 @@
 # Rails
 
 Rails is a web application development framework written in the Ruby programming lang.
+root files are application.html.erb and application.css, application.js
+Rails supports `Webpack` and `Yarn`
 
 first, you set ruby version for AWS Cloud9
 ```ruby
@@ -39,10 +41,13 @@ rails webpacker:install
 
 - Model: app/models/
 - View: app/views/
+  - Layout: layouts/
 - Controller: app/controllers/
 - Helper: app/helpers/
 - Router: config/routes.rb
 - Asset: app/assets/
+  - Image: images/
+  - CSS: stylesheets/
 - Test: test/
 - Gem: Gemfile
 
@@ -55,6 +60,13 @@ rails webpacker:install
 4. UI design, transition design
 5. routing
 6. DB design
+
+## View
+
+- application.html.erb: top html file. this is template file for all view files
+  - yield: this is function() or variable that is embedded from other component files
+- other component files
+  - provide: this sends props to template file by helper function
 
 
 ## routing
@@ -76,11 +88,19 @@ end
 it it html file with embedded ruby. it makes `View` role in app
 
 ```ruby
+# with output
+<%=  %>
+
 # without output
 <%  %>
 
-# with output
-<%=  %>
+# render partial
+<%= render "layouts/partial" %>
+
+# link to another pages in views/
+<%= link_to "Home", "/home"  %>
+# with name path. below is same as above
+<%= link_to "Home", home_path %>
 ```
 
 

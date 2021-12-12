@@ -1,6 +1,6 @@
 module ApplicationHelper
-  # 自動的に全ファイルで読み込まれるから、includeはいらない
-  
+  # you don't need to use include because it is automally loaded
+  # help function
   
   def full_title(page_title = '')
     base_title = "Ruby on Rails Tutorial Sample App"
