@@ -69,7 +69,7 @@ rails webpacker:install
   - provide: this sends props to template file by helper function
 
 
-## routing
+### Routing
 
 write config/routes.rb
 
@@ -82,8 +82,17 @@ Rails.application.routes.draw do
 end
 ```
 
+### named URL
 
-## .html.erb(embedded ruby)
+```ruby:config/routes.rb
+# prev
+get 'controller/path'
+# next
+get '/pathName', to: 'controller#pathName' # = pathName/path
+```
+
+
+### Embedded ruby(viewFile.html.erb)
 
 it it html file with embedded ruby. it makes `View` role in app
 
@@ -103,6 +112,75 @@ it it html file with embedded ruby. it makes `View` role in app
 <%= link_to "Home", home_path %>
 ```
 
+## Controller
+
+generate controller
+  - create app/controllers/Controller.rb
+  - create app/views/controller/action/html.erb
+  - create test/controllers/Controller_text.rb
+  - create app/helpers/Controller_helper.rb
+  - create app/assets/javascripts/Controller.coffee
+  - create app/assets/stylesheets/Controller.scss
+  - route get '*'
+```ruby
+# controller
+rails generate controller "controller_name" "actions"
+# remove
+rails destroy controller "controller_name" "actions"
+```
+
+
+## Model
+
+generate model
+```ruby
+# model
+rails generate model "model_name" "fields:type"
+# remove
+rails destroy model "model_name"
+```
+
+rails db
+```ruby
+# generate
+rails db:migrate
+# restore
+rails db:rollback
+# restore init version
+rails db:migrate VERSION=0
+```
+
+
+## Test
+
+write test/
+
+make test colorful
+```ruby
+# make test code color GREEN or RED
+require 'minitest/reporters'
+Minitest::Reporters.use!
+```
+
+### Integration test
+
+```ruby
+# create test file
+rails generate integration_test "test_name"
+# run test code
+rails test:integration
+```
+
+### Guard(test automation)
+
+```ruby
+# initialize
+bundle exec guard init
+# run
+bundle exec guard
+```
+
+
 
 ## Rails Commands
 
@@ -120,42 +198,7 @@ config Cloud9 connection
   config.hosts.clear
 ```
 
-rails generate controller or model
-```ruby
-# controller
-rails generate controller "controller_name" "actions"
-# remove
-rails destroy controller "controller_name" "actions"
-# model
-rails generate model "model_name" "fields:type"
-# remove
-rails destroy model "model_name"
-```
 
-rails db
-```ruby
-# generate
-rails db:migrate
-# restore
-rails db:rollback
-# restore init version
-rails db:migrate VERSION=0
-```
-
-make test colorful
-```ruby
-# testのGREEN, REDをわかりやすく表示
-require 'minitest/reporters'
-Minitest::Reporters.use!
-```
-
-exec guard(test automation)
-```ruby
-# initialize
-bundle exec guard init
-# run
-bundle exec guard
-```
 
 
 ## heroku commands
