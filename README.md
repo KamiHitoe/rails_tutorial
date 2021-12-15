@@ -1,4 +1,6 @@
 
+tmp: ~6.2.1
+
 # Rails
 
 Rails is a web application development framework written in the Ruby programming lang.
@@ -114,7 +116,7 @@ it it html file with embedded ruby. it makes `View` role in app
 
 ## Controller
 
-generate controller
+generate controllers
   - create app/controllers/Controller.rb
   - create app/views/controller/action/html.erb
   - create test/controllers/Controller_text.rb
@@ -124,31 +126,87 @@ generate controller
   - route get '*'
 ```ruby
 # controller
-rails generate controller "controller_name" "actions"
+rails generate controller "controllers_name" "actions"
 # remove
-rails destroy controller "controller_name" "actions"
+rails destroy controller "controllers_name" "actions"
 ```
 
 
 ## Model
 
-generate model
+it is a Class Object.
+
+generate model. it automatically generate "created_at" and "updated_at" fields
+  - create db/migrate/*.models.rb
+  - create app/models/model.rb
+  - create test/models/model_test.rb
+  - create test/fixtures/models.yml
 ```ruby
 # model
-rails generate model "model_name" "fields:type"
+rails generate model "model_name" "field:type"
 # remove
 rails destroy model "model_name"
 ```
 
 rails db
 ```ruby
-# generate
+# create db from model
 rails db:migrate
 # restore
 rails db:rollback
 # restore init version
 rails db:migrate VERSION=0
 ```
+
+
+
+### ORM(Object Relational Mapping)
+
+Rails's ORM is `Active Record`. 
+
+- model = class(db/migrate/model.rb) named singular with capitalized first letter
+- teble = schema(db/migrate/schema.rb) named plural words
+
+
+create
+```ruby
+field1 = Model.new do |f|
+  f.column1 = value1
+  f.column2 = value2
+end
+field1.save
+# below is same
+field1 = Model.create(column1: value1, column2: value2)
+```
+read
+```ruby
+# get all
+Model.all
+# get first field
+Model.first
+# get last field
+Model.last
+# get by column
+Model.find_by(column: value)
+# WHERE, ORDER, LIMIT
+Model.where(column: value).order(column: :desc).limit(n)
+```
+update
+```ruby
+field = Model.find_by(column: value)
+field.update(column: new_value)
+```
+delete
+```ruby
+# delete single field
+Model.destroy_by(column: value)
+# delete all fields
+Model.destroy_all
+```
+
+### constraints
+
+
 
 
 ## Test
@@ -185,9 +243,14 @@ bundle exec guard
 ## Rails Commands
 
 ```ruby
-rails db:migrate
+# generate controllers or model
+rails generate
+# run testing
 rails test
+# exec irb on rails
 rails console
+rails console --sandbox # don't change db
+# run puma
 rails server
 ```
 
