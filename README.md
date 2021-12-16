@@ -1,5 +1,5 @@
 
-tmp: ~6.2.1
+tmp: ~6.2.4
 
 # Rails
 
@@ -47,6 +47,7 @@ rails webpacker:install
 - Controller: app/controllers/
 - Helper: app/helpers/
 - Router: config/routes.rb
+- Schema: db/schema.rb
 - Asset: app/assets/
   - Image: images/
   - CSS: stylesheets/
@@ -143,19 +144,21 @@ generate model. it automatically generate "created_at" and "updated_at" fields
   - create test/fixtures/models.yml
 ```ruby
 # model
-rails generate model "model_name" "field:type"
+rails generate model "model_name" "column:type"
 # remove
 rails destroy model "model_name"
 ```
 
 rails db
 ```ruby
-# create db from model
+# create schema from model
 rails db:migrate
 # restore
 rails db:rollback
 # restore init version
 rails db:migrate VERSION=0
+# migrate schema
+rails generate migration "migrate_name" "column:type"
 ```
 
 
@@ -180,7 +183,7 @@ field1 = Model.create(column1: value1, column2: value2)
 ```
 read
 ```ruby
-# get all
+# full-table scan
 Model.all
 # get first field
 Model.first
@@ -206,12 +209,46 @@ Model.destroy_all
 
 ### constraints
 
+validate
+  - presence: true or false
+  - length: {maximum: x, minimum: y}
+  - format: {with: /<re>/}
+  - uniqueness: true or false, {case_sensitive: false}
+```ruby:app/models/model.rb
+  validates :column, key: value
+```
+```ruby:rails console
+  f = Model.new({})
+  f.valid? # true or false
+  f.errors.full_messages # return error messages
+```
 
+### encrypt password
+
+install bcrypt
+
+```shell:Gemfile
+gem 'bcrypt' '3.1.13'
+# install on shell
+bundle install
+```
+
+enable has_secure_password in model.rb
+
+```rb:app/models/model.rb
+  has_secure_password
+```
 
 
 ## Test
 
 write test/
+
+- methods
+  - assert: 
+  - assert_not: 
+
+
 
 make test colorful
 ```ruby
