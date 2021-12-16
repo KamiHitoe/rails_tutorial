@@ -1,5 +1,5 @@
 
-tmp: ~6.2.4
+tmp: ~ 7.3.2
 
 # Rails
 
@@ -113,6 +113,17 @@ it it html file with embedded ruby. it makes `View` role in app
 <%= link_to "Home", "/home"  %>
 # with name path. below is same as above
 <%= link_to "Home", home_path %>
+
+# receive props
+<%= yield(:props) %>
+# send props
+<% provide(:props, value) %>
+
+# create form with model
+<%= form_with(model: @model, local: true) do |f| %>
+  <%= f.label :value %>
+  <%= f."type_field" :value %>
+<% end %>
 ```
 
 ## Controller
@@ -153,6 +164,7 @@ rails db
 ```ruby
 # create schema from model
 rails db:migrate
+rails db:migrate RAILS_ENV=production # migrate into production env
 # restore
 rails db:rollback
 # restore init version
@@ -233,11 +245,19 @@ gem 'bcrypt' '3.1.13'
 bundle install
 ```
 
-enable has_secure_password in model.rb
+enable has_secure_password in model.rb.
+it make "password_digest" column into schema.rb.
+user should put "password" and "password_confirmation" values
 
 ```rb:app/models/model.rb
   has_secure_password
 ```
+
+```shell:rails console
+user = User.find_by(*)
+user.authenticate("password") # return instance or false
+```
+
 
 
 ## Test
@@ -287,8 +307,10 @@ rails test
 # exec irb on rails
 rails console
 rails console --sandbox # don't change db
+rails console production # run in production env
 # run puma
 rails server
+rails server --environment production # run puma in production env
 ```
 
 config Cloud9 connection
@@ -298,7 +320,11 @@ config Cloud9 connection
   config.hosts.clear
 ```
 
+### environment
 
+1. development
+2. test
+3. production
 
 
 ## heroku commands
