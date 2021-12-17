@@ -1,5 +1,5 @@
 
-tmp: ~ 7.3.2
+tmp: ~ 8.1.1
 
 Rails is a web application development framework written in the Ruby programming lang.
 root files are application.html.erb and application.css, application.js
@@ -92,6 +92,10 @@ get 'controller/path'
 get '/pathName', to: 'controller#pathName' # = pathName/path
 ```
 
+show all routes
+```shell
+rails routes
+```
 
 # Embedded ruby(viewFile.html.erb)
 
