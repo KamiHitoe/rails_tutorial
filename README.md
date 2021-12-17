@@ -178,8 +178,10 @@ rails db
 # create schema from model
 rails db:migrate
 rails db:migrate RAILS_ENV=production # migrate into production env
-# restore
+# rollback
 rails db:rollback
+# fields reset
+rails db:migrate:reset
 # restore init version
 rails db:migrate VERSION=0
 # migrate schema
@@ -350,11 +352,20 @@ config Cloud9 connection
 2. test
 3. production
 
+activate ssl
+```rb:config/environments/production.rb
+  config.force_ssl = true
+```
 
-# heroku commands
+
+# Heroku commands
 
 you need to push after merge temporary branch to master branch, when you work in another branch but master
 
+create Procfile
+```shell:./Procfile
+web: bundle exec puma -C config/puma.rb
+```
 
 ```ruby
 # login
@@ -368,3 +379,5 @@ git push heroku master
 # log
 heroku logs
 ```
+
+
