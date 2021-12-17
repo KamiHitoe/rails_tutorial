@@ -1,8 +1,6 @@
 
 tmp: ~ 7.3.2
 
-# Rails
-
 Rails is a web application development framework written in the Ruby programming lang.
 root files are application.html.erb and application.css, application.js
 Rails supports `Webpack` and `Yarn`
@@ -12,7 +10,7 @@ first, you set ruby version for AWS Cloud9
 rvm use 2.6.6
 ```
 
-## Get Started
+# Get Started
 
 ```shell
 # install
@@ -39,7 +37,7 @@ rails webpacker:install
 ```
 
 
-## directory structure
+# Directory structure
 
 - Model: app/models/
 - View: app/views/
@@ -64,7 +62,7 @@ rails webpacker:install
 5. routing
 6. DB design
 
-## View
+# View
 
 - application.html.erb: top html file. this is template file for all view files
   - yield: this is function() or variable that is embedded from other component files
@@ -72,7 +70,7 @@ rails webpacker:install
   - provide: this sends props to template file by helper function
 
 
-### Routing
+## Routing
 
 write config/routes.rb
 
@@ -95,16 +93,17 @@ get '/pathName', to: 'controller#pathName' # = pathName/path
 ```
 
 
-### Embedded ruby(viewFile.html.erb)
+# Embedded ruby(viewFile.html.erb)
 
 it it html file with embedded ruby. it makes `View` role in app
 
 ```ruby
 # with output
 <%=  %>
-
 # without output
 <%  %>
+# add attribute
+<%= , attribute: value %>
 
 # render partial
 <%= render "layouts/partial" %>
@@ -126,7 +125,14 @@ it it html file with embedded ruby. it makes `View` role in app
 <% end %>
 ```
 
-## Controller
+## Partial
+
+it is HTML component. it can be reused in .erb files
+
+- app/views/layouts/_partial.html.erb
+
+
+# Controller
 
 generate controllers
   - create app/controllers/Controller.rb
@@ -144,7 +150,14 @@ rails destroy controller "controllers_name" "actions"
 ```
 
 
-## Model
+## Helper
+
+it is helper `function`. it can be reused in every .rb or .erb files
+
+- app/controllers/helpers/*_helper.rb
+
+
+# Model
 
 it is a Class Object.
 
@@ -175,7 +188,7 @@ rails generate migration "migrate_name" "column:type"
 
 
 
-### ORM(Object Relational Mapping)
+## ORM(Object Relational Mapping)
 
 Rails's ORM is `Active Record`. 
 
@@ -219,7 +232,7 @@ Model.destroy_by(column: value)
 Model.destroy_all
 ```
 
-### constraints
+## constraints
 
 validate
   - presence: true or false
@@ -235,7 +248,14 @@ validate
   f.errors.full_messages # return error messages
 ```
 
-### encrypt password
+## other
+
+```shell:rails console
+# return the number of fields
+Model.count
+```
+
+## encrypt password
 
 install bcrypt
 
@@ -260,14 +280,18 @@ user.authenticate("password") # return instance or false
 
 
 
-## Test
+# Test
 
 write test/
 
 - methods
-  - assert: 
-  - assert_not: 
-
+  - assert(test, [msg]): ensures that test is true
+  - assert_not(test, [msg]): ensures that test is false
+  - assert_equal(expected, actual, [msg]): ensures that expected == actual is true
+  - assert_empty(obj, [msg]): ensures that obj is empty?
+  - assert_match(regexp, string, [msg]): ensures that a string matched the regular expression
+  
+  - assert_no_difference(expression) do: asserts that the numeric result of evaluating an expression is not changed before and after invoking the passed in block
 
 
 make test colorful
@@ -277,7 +301,7 @@ require 'minitest/reporters'
 Minitest::Reporters.use!
 ```
 
-### Integration test
+## Integration test
 
 ```ruby
 # create test file
@@ -286,7 +310,7 @@ rails generate integration_test "test_name"
 rails test:integration
 ```
 
-### Guard(test automation)
+## Guard(test automation)
 
 ```ruby
 # initialize
@@ -297,7 +321,7 @@ bundle exec guard
 
 
 
-## Rails Commands
+# Rails Commands
 
 ```ruby
 # generate controllers or model
@@ -320,21 +344,21 @@ config Cloud9 connection
   config.hosts.clear
 ```
 
-### environment
+## environment
 
 1. development
 2. test
 3. production
 
 
-## heroku commands
+# heroku commands
 
 you need to push after merge temporary branch to master branch, when you work in another branch but master
 
 
 ```ruby
 # login
-heroku login --interactive # ブラウザを開かない
+heroku login --interactive # don't open browser
 # create app
 heroku create "APP_NAME"
 # rename
