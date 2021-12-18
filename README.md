@@ -321,6 +321,12 @@ rails generate integration_test "test_name"
 rails test:integration
 ```
 
+## fixture
+
+it is test data into db
+
+- test/fuxtures/models.yml
+
 ## Guard(test automation)
 
 ```ruby
