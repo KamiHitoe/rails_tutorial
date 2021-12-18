@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   # define actions
+  # send @user to View
+  # send params to Model
   
   def show
     @user = User.find(params[:id])

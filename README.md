@@ -127,6 +127,11 @@ it it html file with embedded ruby. it makes `View` role in app
   <%= f.label :value %>
   <%= f."type_field" :value %>
 <% end %>
+# create form without model
+<%= form_with(url: pathName_path, scope: :controller, local: true) do |f| %>
+  <%= f.label :value %>
+  <%= f."type_field" :value %>
+<% end %>
 ```
 
 ## Partial
