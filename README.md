@@ -1,5 +1,5 @@
 
-tmp: ~ 8.1.1
+tmp: ~ 9.1.1
 
 Rails is a web application development framework written in the Ruby programming lang.
 root files are application.html.erb and application.css, application.js
@@ -194,7 +194,7 @@ rails db:migrate:reset
 # restore init version
 rails db:migrate VERSION=0
 # migrate schema
-rails generate migration "migrate_name" "column:type"
+rails generate migration "migrateName_models" "column:type"
 ```
 
 
