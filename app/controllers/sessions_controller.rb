@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # save session by user_id
       log_in user
-      remember user
+      # receive params from View
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user # user_url(user)
     else
       # render flash only in current page
