@@ -2,13 +2,8 @@
 tmp: ~ 9.1.1
 
 Rails is a web application development framework written in the Ruby programming lang.
-root files are application.html.erb and application.css, application.js
+root files are application.html.erb and application.css, application.js.
 Rails supports `Webpack` and `Yarn`
-
-first, you set ruby version for AWS Cloud9
-```ruby
-rvm use 2.6.6
-```
 
 # Get Started
 
@@ -16,12 +11,13 @@ rvm use 2.6.6
 # install
 gem install rails
 # create app
-rails "APP_NAME"
+rails new "APP_NAME"
 # run app
-bin/rails server
-# or
-rails server
+bin/rails server # = rails server
+# cloud 9 set up
+rvm use 2.6.6
 ```
+
 
 ## install modules
 
@@ -77,24 +73,38 @@ write config/routes.rb
 ```ruby
 Rails.application.routes.draw do
   
-  root 'Controller#homePath'
+  root 'Controllers#homePath'
   # HTTP method
-  get 'Controller/path'
+  get 'Controllers/path'
 end
 ```
 
-### named URL
+### Named URL
 
 ```ruby:config/routes.rb
 # prev
-get 'controller/path'
+get 'controllers/path'
 # next
-get '/pathName', to: 'controller#pathName' # = pathName/path
+get '/path', to: 'controller#action' # = pathName/path
 ```
 
 show all routes
 ```shell
 rails routes
+```
+
+### Resourceful Routing
+
+```shell
+      Prefix Verb   URI Pattern                  Controller#Action
+        root GET    /                            articles#index
+    articles GET    /articles(.:format)          articles#index
+ new_article GET    /articles/new(.:format)      articles#new
+     article GET    /articles/:id(.:format)      articles#show
+             POST   /articles(.:format)          articles#create
+edit_article GET    /articles/:id/edit(.:format) articles#edit
+             PATCH  /articles/:id(.:format)      articles#update
+             DELETE /articles/:id(.:format)      articles#destroy
 ```
 
 # Embedded ruby(viewFile.html.erb)
