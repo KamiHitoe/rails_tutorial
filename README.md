@@ -95,16 +95,20 @@ rails routes
 
 ### Resourceful Routing
 
+```rb:config/routes.rb
+  resources :ctrls
+```
+
 ```shell
       Prefix Verb   URI Pattern                  Controller#Action
-        root GET    /                            articles#index
-    articles GET    /articles(.:format)          articles#index
- new_article GET    /articles/new(.:format)      articles#new
-     article GET    /articles/:id(.:format)      articles#show
-             POST   /articles(.:format)          articles#create
-edit_article GET    /articles/:id/edit(.:format) articles#edit
-             PATCH  /articles/:id(.:format)      articles#update
-             DELETE /articles/:id(.:format)      articles#destroy
+        root GET    /                            ctrls#index
+       ctrls GET    /ctrls(.:format)          ctrls#index
+ new_article GET    /ctrls/new(.:format)      ctrls#new
+     article GET    /ctrls/:id(.:format)      ctrls#show
+             POST   /ctrls(.:format)          ctrls#create
+edit_article GET    /ctrls/:id/edit(.:format) ctrls#edit
+             PATCH  /ctrls/:id(.:format)      ctrls#update
+             DELETE /ctrls/:id(.:format)      ctrls#destroy
 ```
 
 # Embedded ruby(viewFile.html.erb)
@@ -194,10 +198,10 @@ rails destroy model "model_name"
 
 rails db
 ```ruby
-# create schema from model
+# create table from model
 rails db:migrate
 rails db:migrate RAILS_ENV=production # migrate into production env
-# rollback
+# drop table
 rails db:rollback
 # fields reset
 rails db:migrate:reset

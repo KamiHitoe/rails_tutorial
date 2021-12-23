@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    # true and save
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Sample App!" # send alert message
@@ -24,6 +25,8 @@ class UsersController < ApplicationController
   
   private
     def user_params
+      # it must be located later than actions
+      # params.require(:model).permit(:columns)
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
   
