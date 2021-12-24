@@ -12,6 +12,8 @@ Rails supports `Webpack` and `Yarn`
 gem install rails
 # create app
 rails new "APP_NAME"
+# without view
+rails new "APP_NAME" --api # -d "DATABASE"
 # run app
 bin/rails server # = rails server
 # cloud 9 set up
